@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-29 17:16:52 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.nxdcms.entity.Competition" table="competition">
+        <id name="comId" type="java.lang.Integer">
+            <column name="com_id" />
+            <generator class="identity" />
+        </id>
+        <property name="comName" type="string">
+            <column name="com_name" length="200" not-null="true" />
+        </property>
+        <property name="scale" type="string">
+            <column name="scale" length="100" not-null="true" />
+        </property>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="holdingUnit" type="string">
+            <column name="holding_unit" length="200" not-null="true" />
+        </property>
+        <property name="enterStart" type="java.util.Date">
+            <column name="enter_start" length="0" not-null="true" />
+        </property>
+        <property name="publishTime" type="java.util.Date">
+            <column name="publish_time" length="0" not-null="true" />
+        </property>
+        <property name="enterStop" type="java.util.Date">
+            <column name="enter_stop" length="0" not-null="true" />
+        </property>
+        <property name="comContent" type="string">
+            <column name="com_content" length="65535" not-null="true" />
+        </property>
+        <property name="comLink" type="string">
+            <column name="com_link" length="500" />
+        </property>
+        <property name="comLinkPath" type="string">
+            <column name="com_link_path" length="500" />
+        </property>
+        
+        <property name="issuer" type="string">
+            <column name="issuer" length="100" not-null="true" />
+        </property>
+        <property name="flag" type="int">
+            <column name="flag" not-null="true" />
+        </property>
+        <set name="subcompetitions" inverse="true">
+            <key>
+                <column name="com_id" />
+            </key>
+            <one-to-many class="com.nxdcms.entity.Subcompetition" />
+        </set>
+    </class>
+</hibernate-mapping>

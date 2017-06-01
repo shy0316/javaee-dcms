@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-14 10:20:41 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.nxdcms.entity.UserPerference" table="userperference" >
+    <composite-id ><!--联合主键，student表中的主键为(student_name,card_id)-->  
+           <key-property name="studentId" column="student_Id" type="java.lang.Long"></key-property><!--name及cardID为Student类中的属性-->  
+           <key-property name="competitionId" column="competition_Id" type="java.lang.Long"></key-property>  
+        </composite-id>  
+        <property name="perferences" type="java.lang.Float">
+            <column name="perferences" />
+        </property>
+        <property name="time" type="java.util.Date">
+            <column name="time" />
+        </property>
+        
+        
+    </class>
+</hibernate-mapping>

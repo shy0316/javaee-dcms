@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <filter>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <filter-class>
+	        filter.OpenSessionInViewFilter
+	    </filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>characterOK</filter-name>
+    <filter-class>filter.CharacterFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterOK</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+<!--   
+  
+  <servlet>
+    <servlet-name>updatePerference</servlet-name>
+    <servlet-class>com.nxdcms.action.UpdatePeoplePerferences</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updatePerference</servlet-name>
+    <url-pattern>/perferences.do</url-pattern>
+  </servlet-mapping> -->
+</web-app>

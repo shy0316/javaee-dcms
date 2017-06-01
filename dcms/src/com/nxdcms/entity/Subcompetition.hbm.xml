@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-25 10:50:35 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="com.nxdcms.entity.Subcompetition" table="subcompetition">
+		<id name="Subcompid" type="string">
+			<column name="id" length="32" />
+			<generator class="uuid" />
+			
+		</id>
+		<many-to-one name="competition" column="com_id" lazy="false"/>
+		<property name="stuId1" not-null="true" unique="true"/>
+		<property name="stuId2" />
+		<property name="workName" not-null="true" />
+		<property name="college" not-null="true" />
+		<property name="teamName" not-null="true" />
+		<property name="compBookName" />
+		<property name="compBookpath" />
+		<property name="compAgreementName" />
+		<property name="compAgreementpath"  />
+		<property name="awardName"  />
+		
+		<!--  <property name="awardPicName"/>-->
+		<property name="awardGrade"/>
+		<property name="awarddate" type="timestamp"></property>
+		<property name="awardPicpath" />
+		<property name="awardIntr"  />
+		<property name="teacher" not-null="true" />
+		<property name="production" not-null="true" />
+	</class>
+</hibernate-mapping>

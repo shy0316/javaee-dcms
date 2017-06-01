@@ -1,0 +1,101 @@
+分页插件使用:
+struts.xml的配置
+<package name="name" extends="struts-default,json-default">
+	    <action name="limit" class="com.nxdcms.limitpage.LimitAction">
+			<result name="success" type="json">
+	            <param name="root">result</param>//返回的变量名
+	        </result>
+		</action>
+</package>
+
+jsp中ajax：
+		$.ajax({
+			  type:"get",//get/post
+			  url:"limit.action",
+			  dataType:"json",
+			  data:{//传到后台的参数
+				  "pageSize":pageSize,
+				  "curPage":curPage,
+				  "grade":grade,
+				  "teacher":teacher,
+				  "time":time},
+			  success:function(data){//得到后台返回后要做的事情
+				  var json = data.list;
+				  $("#mytable .tr").remove();
+				  for (var i=0;i<json.length;i++) {
+						$("#mytable").append($("<tr class='tr'><td>"+json[i].subcompid+"</td><td>"+json[i].awardGrade+"</td><td>"+json[i].awardName+"</td><td>"+json[i].teacher+"</td><td><a href='content.action?Subcompid="+json[i].subcompid+"'>"+"详情"+"</a></td></tr>"));
+				  }
+			  },
+			  error:function(XMLHttpRequest, textStatus, errorThrown){
+				  alert("error");                
+				} 
+		  });
+后台：
+
+private String pageSize ;
+	private String curPage ;
+	private String grade ;
+	private String teacher ;
+	private String time ;
+	private PageObject result = null;
+
+
+
+public String execute() throws Exception {
+		//调试使用
+		System.out.println("当前页"+curPage+"每页行数"+pageSize+grade+teacher+time);
+
+		//定义查询条件
+		Criterion criterion0=null,criterion1=null,criterion2=null;
+		
+		//创建hibernate的session
+		Session session = HibernateUtils1.getSession();
+
+		//定义hibernate所要查询类
+		Class ObjClass = null;
+		try {
+			//实例化要查询的类名
+			ObjClass = Class.forName("com.nxdcms.entity.Subcompetition");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		//过滤查询条件，没有查询条件就将空值传入方法
+		if(grade!=null&&!"".equals(grade)&&!"null".equals(grade)){
+			criterion0 = Restrictions.like("awardGrade", grade);
+		}else{
+			System.out.println("grade null");
+		}
+		if(teacher!=null&&!"".equals(teacher)&&!"null".equals(teacher)){
+			criterion1 = Restrictions.like("teacher",teacher);
+		}else{
+			System.out.println("teacher null");
+		}
+		if(time!=null&&!"".equals(time)&&!"null".equals(time)){
+			criterion2 = Restrictions.like("awarddate", time);
+		}else{
+			System.out.println("time null");
+		}
+		
+		//定义排序（降序/升序）
+		Order order = Order.asc("stuId1");
+		
+		//参数传入工具，返回一个具体的分页类
+		//注意最后三个查询条件可以不止三个，理论可以传入无限多个查询条件
+		result = LimitDao.queryByPage(session, Integer.parseInt(pageSize), Integer.parseInt(curPage), ObjClass, order,
+				criterion0, criterion1, criterion2);
+		
+		//调试使用
+		if (result == null) {
+			System.out.println("po null");
+		} else {
+			for (Object o : result.getList()) {
+				Subcompetition s = (Subcompetition) o;
+				System.out.println(s.getAwardGrade());
+			}
+		}
+		System.out.println(result);
+		
+		return "success";
+	}

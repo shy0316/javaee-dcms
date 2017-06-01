@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-17 13:58:57 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.nxdcms.entity.Notice" table="notice">
+        <id name="noticeId" type="string">
+			<column name="notice_id" length="32" not-null="true"/>
+			<generator class="uuid" />
+		</id>
+		<property name="noticeContent" type="string">
+			<column name="notice_content" length="150" not-null="true" unique="true"/>
+		</property>
+		<property name="noticeDate" type="string">
+			<column name="notice_date" length="20" />
+		</property>
+    </class>
+</hibernate-mapping>

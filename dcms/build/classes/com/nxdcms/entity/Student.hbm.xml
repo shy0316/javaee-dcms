@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-14 10:20:41 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.nxdcms.entity.Student" table="student" catalog="dcms" lazy="false">
+        <id name="studentId" type="string">
+            <column name="student_ID" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="studentPassword" type="string" >
+            <column name="student_password" length="50" not-null="true" />
+        </property>
+        <property name="studentName" type="string">
+            <column name="student_name" length="20" not-null="false " />
+        </property>
+        <property name="studentAge" type="int">
+            <column name="student_age" not-null="false" />
+        </property>
+        <property name="studentCollege" type="string">
+            <column name="student_college" length="40" not-null="false" />
+        </property>
+        <property name="studentDiscipline" type="string">
+            <column name="student_discipline" length="40" not-null="false" />
+        </property>
+        <property name="studentClass" type="string" >
+            <column name="student_class" length="40" not-null="false" />
+        </property>
+        <property name="studentStartYear" type="string" >
+            <column name="student_start_year" length="10" not-null="false" />
+        </property>
+        <property name="studentIdcard" type="string" >
+            <column name="student_IDcard" length="40" not-null="false" />
+        </property>
+        <property name="studentEmail" type="string">
+            <column name="student_email" length="40" />
+        </property>
+        <!-- 在更新中不做更改就是输入了新的值也不变 -->
+        <property name="studentPhone" type="string">
+            <column name="student_phone" length="40" not-null="false" />
+        </property>
+            <property name="recommendedItem" type="java.lang.Long">
+            <column name="recommended_Item"  />
+        </property>
+    </class>
+</hibernate-mapping>

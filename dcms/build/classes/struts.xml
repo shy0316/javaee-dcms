@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 当struts.xml配置文件发生修改 会立刻加载，在生产环境下 给客户用的环境 生产环境下 不要配置 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 会提供更加友好的提示信息 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- 需要继承struts-default 包 这样的话就拥有了最基本的功能 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	
+	<package name="limit" extends="struts-default,json-default">
+	    <action name="limit" class="limitpage.LimitAction">
+			<result name="success" type="json">
+	            <param name="root">result</param>//返回的变量名
+	        </result>
+		</action>
+</package>
+
+
+<!-- 学生登录注册 -->
+	<package name="Student-package" extends="json-default">
+	    <!-- 学生注册 -->
+	    <action name="regist_Student" class="com.nxdcms.action.LoginAction"
+	        method="registStudent">
+	        <result name="success">/Student_login.jsp</result>
+	        <result name="error">/Student_regist.jsp</result>
+	    </action>
+	    <!-- 创建验证码 -->
+	    <action name="createCode" class="com.nxdcms.action.LoginAction" 
+	        method="createCode">
+	        <result></result>
+	    </action>
+	    <!--验证码判断 -->
+	    <action name="codeCheck" class="com.nxdcms.action.LoginAction"
+	        method="codeCheck">
+	    </action>
+	    <!-- 学生ID是否存在判断 -->
+	    <action name="stuIdCheck" class="com.nxdcms.action.LoginAction" method="stuIdCheck">
+	        <result>  </result>
+	    </action>
+	    <!-- 学生登录 -->
+	    <action name="login_student" class="com.nxdcms.action.LoginAction"
+	        method="LoginStu">
+	    	<result name="success">/index.jsp</result>
+	    	<result name="error">/index_manage.jsp</result>
+	    	
+	    	<result name="loginfail">/Student_login.jsp</result>
+	    </action>
+		<!--完善学生信息 -->
+	    <action name="perfectStuInfo" class="com.nxdcms.action.LoginAction"
+	        method="perfectStuInfo">
+	    	<result name="success">/personalset.jsp</result>
+	    	<result name="error">/personalset.jsp</result>
+	    </action>
+	    <!-- 学生退出登录 -->
+	    <action name="logout" class="com.nxdcms.action.LoginAction" method="logoutAdmin">
+	    	<result name="success" >/index.jsp</result>
+	    	<result name="error">/index.jsp</result>
+	    	
+	    </action>
+	    
+	    <!-- 展示学生信息                 用string返回值方式传json的话，result name和param一定一要写-->
+	    <action name="showStuInfo" class="com.nxdcms.action.LoginAction" method="showStuInfo">
+	    	<!-- <result type="json" name="success">
+	    	    <param name="root">map</param>
+			</result> -->
+			
+	    </action>
+	    
+	    <!-- 检查学生信息 -->
+	    <action name="StuPasswordcheck" class="com.nxdcms.action.LoginAction" method="StuPasswordcheck">
+	        <result></result>
+	    </action>
+	</package>
+
+	<!-- 成果展示模块 -->
+	<package name="struts2" extends="struts-default">
+		<action name="discipline" class="com.nxdcms.action.DisciplineAction">
+			<result>/discipline.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="email" class="com.nxdcms.action.EmailAction">
+			<result type="redirectAction">discipline</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="modify" class="com.nxdcms.action.ShowAction"
+			method="update">
+			<result name="success">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="listc" class="com.nxdcms.action.ShowAction"
+			method="list">
+			<result>/showquery.jsp</result>
+		</action>
+
+		<action name="modifys1" class="com.nxdcms.action.ShowAction"
+			method="list">
+			<result>/modify.jsp</result>
+		</action>
+
+		<action name="content" class="com.nxdcms.action.ShowAction"
+			method="content">
+			<result>/showcontent.jsp</result>
+		</action>
+
+		<action name="likesearch" class="com.nxdcms.action.ShowAction"
+			method="search">
+			<result>/show.jsp</result>
+		</action>
+
+		<action name="upload" class="com.nxdcms.action.UploadAction">
+			<result>/index.jsp</result>
+		</action>
+		<action name="export" class="com.nxdcms.action.ShowAction"
+			method="export">
+			<result>/index.jsp</result>
+		</action>
+		<action name="export1" class="com.nxdcms.action.ShowAction"
+			method="export1">
+			<result>/index.jsp</result>
+		</action>
+
+	</package>
+	
+	
+	
+	
+	
+	<package name="ajax2" extends="json-default">
+	    <action name="ajax2" class="com.nxdcms.action.AjaxAction2">
+	         <!-- 返回类型为json 在sjon-default中定义 --> 
+	        <result name="success" type="json">/</result>
+	    </action>
+	</package>
+	
+	<package name="ajax3" extends="json-default">
+	    <action name="ajax3" class="com.nxdcms.action.AjaxAction3">
+	         <!-- 返回类型为json 在sjon-default中定义 --> 
+	        <result name="success" type="json">/</result>
+	    </action>
+	</package>
+	
+
+
+
+	<!-- 公告模块 -->
+	<package name="notice-package" extends="struts-default">
+		<action name="addnotice" class="com.nxdcms.action.NoticeAction"
+			method="add">
+			<result name="success">/noticemanage_query.jsp</result>
+		</action>
+
+		<action name="delnotice_input" class="com.nxdcms.action.NoticeAction"
+			method="mes">
+			<result>/noticemanage_modify.jsp</result>
+
+		</action>
+
+		<action name="delnotice" class="com.nxdcms.action.NoticeAction"
+			method="del">
+			<result name="success">/noticemanage_query.jsp</result>
+		</action>
+
+		<action name="modifynotice" class="com.nxdcms.action.NoticeAction"
+			method="update">
+			<result name="success">/noticemanage_query.jsp</result>
+		</action>
+		<action name="listnotice" class="com.nxdcms.action.NoticeAction"
+			method="list">
+			<result>/noticemanage_query.jsp</result>
+
+		</action>
+		
+		<!-- 首页加载 -->
+		<action name="frontlistnotice" class="com.nxdcms.action.NoticeAction"
+			method="frontlist">
+		</action>
+		
+		<action name="searchnotice" class="com.nxdcms.action.NoticeAction"
+			method="search">
+			<result name="success">/noticemanage_query.jsp</result>
+		</action>
+
+	</package>
+
+	<!-- 卢迪部分 -->
+	<package name="competitionInfo" extends="struts-default">
+
+		<action name="SaveCompetitionInfo" class="com.nxdcms.action.CompetionManageAction"
+			method="SaveCompetitionInfo">
+			<param name="savePath">/images</param>
+			<result>/addsubcompetition.jsp</result>
+			<result name="error">/index_manage.jsp</result>
+		</action>
+
+		<action name="LoadclassfiedCompetition" class="com.nxdcms.action.CompetionManageAction"
+			method="LoadsubCompetitionInfo">
+			<result>/mycompetition.jsp</result>
+			<result name="error">/mycompetition.jsp</result>
+		</action>
+
+
+		<action name="descComptition" class="com.nxdcms.action.CompetionManageAction"
+			method="ShowmyCompetition">
+			<result>/descmyCompetition.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+		<action name="LoadDocx" class="com.nxdcms.action.CompetionManageAction"
+			method="loadFileinDocs">
+
+			<result>/docx.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="deleteSubcompetition" class="com.nxdcms.action.CompetionManageAction"
+			method="deleteeachSubcompetition">
+			<result>/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="modifySubcompStep1" class="com.nxdcms.action.CompetionManageAction"
+			method="ModifySubcompetitionStep1">
+			<result>/ModifySubCompetition.jsp</result>
+		</action>
+
+		<action name="modifySubcompStep2" class="com.nxdcms.action.CompetionManageAction"
+			method="ModifySubcompetitionStep2">
+			<result>/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="load" extends="json-default">
+
+		<action name="loaddirectionary" class="com.nxdcms.action.BaseAction"
+			method="loadDirectoryFrom">
+			<result type="json" name="success">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+	</package>
+
+
+	<package name="perferences" extends="json-default">
+		<action name="loadmyperference" class="com.nxdcms.action.RecommendAction"
+			method="SendRecommendedItem">
+			<result type="json">
+				<param name="root"></param>
+			</result>
+		</action>
+
+		<action name="myfocus" class="com.nxdcms.action.RecommendAction"
+			method="LoadAllPerferences">
+			<result type="json">
+				<param name="root"></param>
+			</result>
+		</action>
+
+		<action name="loadcompetition" class="com.nxdcms.action.RecommendAction"
+			method="loadAllCompetitions">
+			<result type="json">
+				<param name="root"></param>
+			</result>
+		</action>
+		<action name="accesscompetition" class="com.nxdcms.action.RecommendAction"
+			method="UpdatePerferences">
+			<result type="json">
+				<param name="root"></param>
+			</result>
+		</action>
+		
+		<action name="deletedictionary" class="com.nxdcms.action.BaseAction"
+			method="deleteDirectoryFrom">
+			<result type="json">
+				<param name="root"></param>
+			</result>
+		</action>
+		<action name="loadManage" class="com.nxdcms.action.BaseAction"
+			method="loadAllDictionaryM">
+			<result type="json" name="success">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+
+	<!-- 彭杨丽的部分 -->
+	<package name="news-package" extends="struts-default">
+
+		<action name="queryNews" class="com.nxdcms.action.NewsAction"
+			method="list">
+			<result>/news.jsp</result>
+		</action>
+		<action name="indexshowNews" class="com.nxdcms.action.NewsAction"
+			method="showIndex">
+			<result>/index.jsp</result>
+		</action>
+		<action name="newsContent" class="com.nxdcms.action.NewsAction"
+			method="details">
+			<result>/news_content.jsp</result>
+		</action>
+
+		<action name="queryNews_manage" class="com.nxdcms.action.NewsAction"
+			method="list">
+			<result>/newsManage.jsp</result>
+		</action>
+		<action name="showNews" class="com.nxdcms.action.NewsAction"
+			method="show">
+			<result>/newsManage.jsp</result>
+		</action>
+		<action name="showNews_" class="com.nxdcms.action.NewsAction"
+			method="show">
+			<result>/news.jsp</result>
+		</action>
+		<action name="newsContent_manage" class="com.nxdcms.action.NewsAction"
+			method="details">
+			<result>/newsManage_content.jsp</result>
+		</action>
+		<action name="newsModify_manage" class="com.nxdcms.action.NewsAction"
+			method="details">
+			<result>/newsManage_modify.jsp</result>
+		</action>
+		<action name="addNews" class="com.nxdcms.action.NewsAction"
+			method="add">
+			<!-- 定义逻辑视图和物理资源之间的映射 -->
+			<result>/newsManage.jsp</result>
+			<result name="error">/newsManage.jsp</result>
+		</action>
+		<action name="delNews" class="com.nxdcms.action.NewsAction"
+			method="del">
+			<result>/newsManage.jsp</result>
+		</action>
+		<action name="modifyNews" class="com.nxdcms.action.NewsAction"
+			method="update">
+			<result>/newsManage.jsp</result>
+		</action>
+		<action name="searchNews" class="com.nxdcms.action.NewsAction"
+			method="search">
+			<result>/news.jsp</result>
+		</action>
+		<action name="searchNews_manage" class="com.nxdcms.action.NewsAction"
+			method="search">
+			<result>/newsManage.jsp</result>
+		</action>
+	</package>
+
+	<!-- CPP -->
+	<package name="competition" extends="struts-default">
+		<!--<action name="SaveCompetition" class="com.nxdcms.action.CompetitionAction"> 
+			<result>/index.jsp</result> </action> -->
+
+		<action name="SaveCompetition" class="com.nxdcms.action.CompetitionAction"
+			method="SaveCompetitionInfo">
+			<result>/Competition-index.jsp</result>
+		</action>
+
+		<action name="delete" class="com.nxdcms.action.CompetitionAction"
+			method="DeleteCompetitionInfo">
+			<result>/Competition-index.jsp</result>
+		</action>
+
+		<action name="query" class="com.nxdcms.action.CompetitionAction"
+			method="QueryCompetitionInfo">
+			<result>/Competition-index.jsp</result>
+		</action>
+
+		<action name="anonymousQuery" class="com.nxdcms.action.CompetitionAction"
+			method="QueryCompetitionInfo">
+			<result>/Competition-anonymous.jsp</result>
+		</action>
+
+		<action name="check" class="com.nxdcms.action.CompetitionAction"
+			method="QueryCompetitionInfo2">
+			<result>/Competition-check.jsp?Competition.comId=${comId}</result>
+		</action>
+		
+		<action name="managecheck" class="com.nxdcms.action.CompetitionAction"
+			method="QueryCompetitionInfo2">
+			<result>/CompetitionManage-check.jsp?Competition.comId=${comId}</result>
+		</action>
+
+		<action name="modify" class="com.nxdcms.action.CompetitionAction"
+			method="QueryCompetitionInfo2">
+			<result>/Competition-modify.jsp?Competition.comId=${comId}</result>
+		</action>
+		<action name="modifyComInfo" class="com.nxdcms.action.CompetitionAction"
+			method="ModifyCompetitionInfo">
+			<result>/Competition-index.jsp</result>
+		</action>
+
+		<action name="searchComInfo" class="com.nxdcms.action.CompetitionAction"
+			method="search">
+			<result name="success">/Competition-index.jsp</result>
+		</action>
+
+		<action name="anonymousSearchComInfo" class="com.nxdcms.action.CompetitionAction"
+			method="search">
+			<result name="success">/Competition-anonymous.jsp</result>
+		</action>
+
+		<!--查询竞赛信息（列表）（到参赛信息页面） -->
+		<action name="joinComQuery" class="com.nxdcms.action.CompetitionAction"
+			method="QueryCompetitionInfo">
+			<result>/Competition-join.jsp</result>
+		</action>
+		
+		<!-- 模糊查询竞赛信息（作查看参赛学生用） -->
+		<action name="joinSearchComInfo" class="com.nxdcms.action.CompetitionAction"
+		    method="joinSearch">
+			<result name="success">/Competition-join.jsp</result>
+		</action>
+		
+		<action name="joincheck" class="com.nxdcms.action.CompetionManageAction"
+			    method="LoadsubCompetitionInfo">
+			    <result name="success">/Competition-joinStudentCheck.jsp</result>
+			</action>
+			
+		</package>
+
+</struts>

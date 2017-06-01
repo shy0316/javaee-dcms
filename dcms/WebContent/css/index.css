@@ -1,0 +1,274 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.top{
+    width: 100%;
+    height: 173px;
+}
+.logo{
+    margin-top: 40px;
+}
+.login{
+    width: 50px;
+    height: 20px;
+    float: right;
+    border-radius: 8px;
+    margin: 10px 10px 0 0;
+    background: #a52718;
+    color: aliceblue;
+}
+.aside{
+    margin: 0;
+    float: right;
+}
+.text{
+    height: 30px;
+}
+.search{
+    margin-right: 50px;
+    height: 35px;
+    width: 35px;
+    background: #a52718;
+    color: aliceblue;
+}
+.nav{
+    width: 100%;
+    height: 30px;
+    position: relative;
+    background: #09386b;
+    margin-bottom: 0;
+}
+.nav ul{
+    list-style: none;
+    text-align: center;
+    position: absolute;
+    left: 169px;
+}
+.nav li{
+    width: 200px;
+    height: 20px;
+    float: left;
+    text-align: center;
+    background: #09386b;
+    color: aliceblue;
+    display: block;
+    cursor: pointer;
+    line-height: 30px;
+}
+a{
+    color: aliceblue;
+    text-decoration: none;
+}
+.content{
+    margin: 0 auto;
+    width: 1000px;
+    height: 1000px;
+}
+.li{
+    width: 1000px;
+    height: 352px;
+    float: left;
+}
+
+.li:nth-child(1){
+    background:url(../imgs/1.jpg);
+}
+
+.li:nth-child(2){
+    background:url(../imgs/2.jpg);
+}
+
+.li:nth-child(3){
+    background:url(../imgs/3.jpg);
+}
+
+
+
+.ppt-per{
+    width: 3000px;
+    height: 352px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.ppt{
+    width: 1000px;
+    height: 352px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto;
+    cursor: pointer;
+    margin: 0;
+}
+
+.left{
+    width: 30px;
+    height: 60px;
+    background: #000;
+    opacity: 0.2;
+    position: absolute;
+    left: 0px;
+    top: 135px;
+}
+
+.right{
+    width: 30px;
+    height: 60px;
+    background: #000;
+    opacity: 0.2;
+    position: absolute;
+    right: 0px;
+    top: 135px;
+}
+
+.left:hover, .right:hover{
+    opacity: 0.4;
+}
+
+.cicles{
+    width: 66px;
+    height: 14px;
+    position: absolute;
+    left: 445px;
+    bottom: 10px;
+}
+
+.cc{
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    background: #ccc;
+    margin: 0 4px;
+    float: left;
+}
+
+.cc.h{
+    background: orange;
+}
+.news{
+    width: 700px;
+    height: 348px;
+    
+    float: left;
+    margin: 0;
+}
+.title_news{
+    width: 94%;
+    height: 25px;
+    margin:15px 0px 0px 20px;
+    padding:10px 0px 0px 0px;
+    font:15px "微软雅黑";
+    border-bottom: 1px solid #EEE; 
+    color:#104E76;
+}
+.more{
+    font:11px "微软雅黑";
+    color:#B7B7B7;
+    position: relative;
+    right: 5px;
+    top:3px;
+    float:right;
+}
+.more:hover{
+    color:#104E76;
+}
+.show_news{
+    width: 250px;
+    height: 175px;
+    margin:15px 0px 0px 20px;
+    padding:0px 0px;
+    position: relative;
+    left:0px;
+    top:0px;
+    /*box-shadow: -2px 2px  3px #AAA;*/
+}
+.pic_news{
+    width: 250px;
+    height: 175px;
+    margin:0px 0px;
+}
+.news_con{
+    width: 375px;
+    height: 170px;
+    margin:15px 10px 0px 0px;
+    padding:0px 0px;
+    float:right;
+    position: relative;
+    top:-185px;
+    right:10px;
+    /*background: #DDDDDD;*/
+}
+.news_con ul li a{
+    font:12px "微软雅黑";
+    color:#666666;
+    line-height: 23px;
+}
+.news_con ul li a:hover{
+    color:#104E76;
+}
+.notice{
+    width: 300px;
+    height: 348px;
+    background: green;
+    float: left;
+    margin: 0;
+}
+.run {
+	margin-left: 10px;
+	line-height: 32px;
+	height: 270px;
+	font-family: "Microsoft YaHei"
+}
+
+.notice-bottom {
+	position: relative;
+	top: -15px;
+	color: white;
+	font-family: "Microsoft YaHei"
+}
+
+.notice-bottom span {
+	position: relative;
+	right: -100px;
+	top: -30px;
+}
+.outcome{
+    width: 1000px;
+    height: 300px;
+    clear: both;
+}
+.show{
+    width: 500px;
+    height: 130px;
+    margin-top: 24px;
+    margin-left: 0;
+    float: left;
+    position: relative;
+    
+}
+
+
+.word1{
+    width: 200px;
+    height: 130px;
+    float: left;
+    position: absolute;
+    left: 280px;
+    top: 10px;
+}
+.word1 a{
+    color: #999;
+    text-decoration: none;
+}
+.foot{
+    width: 100%;
+    height: 60px;
+    background: #f2f2f2;
+    text-align: center;
+    line-height: 20px;
+    padding-top: 15px;
+    color: #9898ae;
+}

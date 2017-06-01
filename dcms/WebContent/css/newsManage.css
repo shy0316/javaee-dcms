@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.top{
+    width: 100%;
+    height: 173px;
+}
+.logo{
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.login{
+    width: 50px;
+    height: 20px;
+    float: right;
+    border-radius: 8px;
+    margin: 10px 10px 0 0;
+    background: #a52718;
+    color: aliceblue;
+}
+.aside{
+    margin: 0;
+    float: right;
+}
+.text{
+    height: 30px;
+}
+.search{
+    margin-right: 50px;
+    height: 35px;
+    width: 35px;
+    background: #a52718;
+    color: aliceblue;
+}
+.nav{
+    width: 100%;
+    height: 30px;
+    position: relative;
+    background: #09386b;
+    margin-bottom: 0;
+}
+.nav ul{
+    list-style: none;
+    text-align: center;
+    position: absolute;
+    left: 169px;
+}
+.nav li{
+    width: 200px;
+    height: 20px;
+    float: left;
+    text-align: center;
+    background: #09386b;
+    color: aliceblue;
+    display: block;
+    cursor: pointer;
+    line-height: 30px;
+}
+a{
+    color: aliceblue;
+    text-decoration: none;
+}
+/*----------------------------------------------content----------------------*/
+.container{
+    width: 100%;    
+    margin:0px 0px;
+    padding: 0px 0px;
+}
+.query_con{
+    background: #FAF8F8;
+    width: 100%;
+    height: 120px;
+    padding: 0px 0px;
+}
+.query{
+    height: 100px;
+    margin:15px 0px;
+    font:14px "微软雅黑";
+    color: #605F5F;
+}
+.title{
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+.goto{
+    height: 100px;
+    margin:40px auto;
+}
+.goto_bt{
+	width:80px;
+	float:left;
+	margin-left:15px;
+}
+.content{
+    margin: 0 auto;
+    width: 1200px;
+    height:610px;
+     font:14px "微软雅黑";
+     color: #605F5F;
+}
+.list_con{
+    width: 100%;
+    margin:-25px 0px 25px 0px;
+}
+.table th{
+    text-align: center;
+}
+.list_details,.list_modify,.list_delete{
+    background: #A3ACAE;
+    height: 20px;
+    width: 70px;
+    margin: 5px  0px;
+    line-height: 20px;
+    text-indent: 22px;
+    border-radius: 15px;
+    color:#FFFFFF;
+    display: block;
+}
+.list_details:hover{
+    background: #175E89;
+    color:#EBE9E9;
+    cursor: pointer;
+    text-decoration:none; 
+}
+.list_modify:hover{
+    background: #0D8350;
+    color:#EBE9E9;
+    cursor: pointer;
+    text-decoration:none; 
+}
+.list_delete:hover{
+    background: #AD152A;
+    color:#EBE9E9;
+    cursor: pointer;
+    text-decoration:none; 
+}
+
+
+
+/*-----------------------------------------------footer-----------------------------------------------*/
+.foot{
+    width: 100%;
+    height: 60px;
+    background: #f2f2f2;
+    text-align: center;
+    line-height: 20px;
+    padding-top: 15px;
+    color: #9898ae;
+}
